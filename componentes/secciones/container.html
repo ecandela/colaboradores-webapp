@@ -1,0 +1,93 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html"> 
+
+<!-- Define element markup -->
+<dom-module id="hello-world">
+    <template>
+        <p>Hello <strong>{{who}}</strong> :)</p>
+    </template>
+</dom-module>
+
+<!-- Register custom element -->
+<script>
+Polymer({
+    is: 'hello-world',
+    properties: {
+        who: {
+            type: String,
+            value: 'World'
+        }
+    }
+});
+</script>
+
+
+<!-- Define container element  -->
+
+
+<!-- Define element markup -->
+<dom-module id="container">
+    <template>
+     <div class="container">
+         <content></content>
+      </div> <!-- /container -->    
+    </template>
+</dom-module>
+
+<!-- Register custom element -->
+<script>
+Polymer({
+    is: 'container',
+    properties: {
+        
+    }
+});
+</script>
+
+
+
+<!-- Define form login -->
+<dom-module id="form-login">
+    <template>
+
+ <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+
+
+<iron-ajax
+    auto
+    url="https://security-token.herokuapp.com/api200"    
+    handle-as="json"
+    on-response="handleResponse"
+    debounce-duration="300"></iron-ajax>
+
+ 
+    </template>
+</dom-module>
+
+<!-- Register custom element -->
+<script>
+Polymer({
+    is: 'form-login',
+    properties: {
+        
+    },
+    handleResponse : function (data){
+    
+    alert(data);
+    
+    }
+});
+</script>
+
+
